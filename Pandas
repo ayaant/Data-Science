@@ -1,0 +1,43 @@
+
+import pandas as pd
+import numpy as np
+'''
+#creating a data frame
+df = pd.DataFrame({"Name":["Ayaan","John"],"Age":[17,28],"City":["Perth","Sydney"]})
+print(df)
+
+#Display specified amount of rows
+print(df.head(1))
+
+#Show shape of data frame
+print(df.shape)
+
+#Access only one particular column
+print(df["Name"])
+
+#Prints max age
+print(df["Age"].max())
+
+#Print shape of particular column
+print(df["Age"].shape)
+
+print(df.describe())
+
+print(df.info())
+
+#creating a pandas series object
+series = pd.Series([1,2,3,4],["a","b","c","d"])
+print(series)
+array = np.array([1,2,3,4])
+series1 = pd.Series(array)
+print(series1)
+list2 = [["Ayaan",17],["John",28],["Mary",21]]
+df1 = pd.DataFrame(list2,columns= ["Name","Age"])
+print(df1)
+'''
+
+titanic_data = pd.read_csv("titanic.csv")
+print(titanic_data.head())
+print(titanic_data.describe())
+print(titanic_data[["Name","Age"]].head()) 
+print(titanic_data[titanic_data["Age"]>35])

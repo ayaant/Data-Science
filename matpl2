@@ -1,0 +1,56 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+'''
+x_mark = np.linspace(-np.pi,np.pi,15)
+c = np.cos(x_mark)
+s = np.sin(x_mark)
+ax = plt.axes([0.1,0.1,0.8,0.8])
+plot_1 = ax.plot(x_mark,c,"bs:")
+plot_2 = ax.plot(x_mark,s,"ro-")
+ax.legend(labels=("Cos Function","Sin Function"))
+ax.set_title("Trig Functions")
+plt.show()
+
+
+#multiple subplots
+x = [1,2,3]
+y = [0,1,0]
+z = [1,0,1]
+fig, ax = plt.subplots(2)
+ax[0].plot(x,y)
+ax[1].plot(x,z)
+plt.show()
+
+
+x = np.arange(0,2,0.01)
+y = 1 + np.sin(2*np.pi*x)
+fig,((ax1,ax2),(ax3,ax4),(ax5,ax6)) = plt.subplots(3,2)
+ax1.plot(x,y,color="orange")
+ax2.plot(x,y,color="blue")
+ax3.plot(x,y,color="red")
+ax4.plot(x,y,color="green")
+ax5.plot(x,y,color="purple")
+ax6.plot(x,y,color="yellow")
+plt.show()
+
+
+fig,ax = plt.subplots(2,2)
+ax[0,0].plot([1,2,3],[4,5,6])
+ax[0,1].scatter([1,2,3],[4,5,6])
+ax[1,0].bar([1,2,3],[4,5,6])
+ax[1,1].hist([1,2,2,3,3,3,4,4,4,4,5,5,5,5,5,6,6,6,6,6,6])
+plt.show()
+'''
+data = {"Math":20, "English":30,"Science":50 , "HASS":15}
+courses = list(data.keys())
+values = list(data.values())
+fig = plt.figure(figsize= (10,5))
+plt.bar(courses,values,color= "red",width=0.4)
+plt.xlabel("Courses")
+plt.ylabel("Number of Students")
+plt.title("Student Enrollment")
+plt.legend("Courses that students are taking")
+plt.show()
+
+#read vars.csv file, take head (first 10 values) of the file, x axis = details of the car, y axis = price of the car, plot bar graph (merging pandas and matpl)

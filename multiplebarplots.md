@@ -19,7 +19,7 @@ ax.set_title("Car Cylinders")
 for i in ax.patches:
     plt.text(i.get_width()+0.2,i.get_y()+0.5,str(round(i.get_width(),2)),fontsize=10,fontweight="bold",color="black")
 plt.show()
-'''
+
 
 #multiple barplots
 #set width of the bar
@@ -37,12 +37,20 @@ for i in bar1:
 bar3 = [i + bar_width for i in bar2]
 
 #create the plot
-plt.bar(bar1,color="black",width=bar_width,edgecolor="white",label = "IT")
-plt.bar(bar2,color="red",width=bar_width,edgecolor="white",label = "ECE")
-plt.bar(bar3,color="blue",width = bar_width, edgecolor="white",label="CSE")
+plt.bar(bar1,it,color="black",width=bar_width,edgecolor="white",label = "IT")
+plt.bar(bar2,ece,color="red",width=bar_width,edgecolor="white",label = "ECE")
+plt.bar(bar3,cse,color="blue",width = bar_width, edgecolor="white",label="CSE")
 plt.xlabel("Branch of Engineering",fontweight="bold",fontsize=8)
-plt.ylabel("Successful Students",fontweight="italics",fontsize=8)
-#plt.xticks(['2018','2019','2020','2021','2022'])
+plt.ylabel("Successful Students",fontweight="bold",fontsize=8)
+plt.xticks([i + bar_width for i in range(len(it))],['2018','2019','2020','2021','2022'])
 plt.legend()
 plt.show()
+'''
 
+#pie chart
+activities = ["Sleep","Work Out", "Study", "Play Outside", "Read"]
+size = [8,3,5,3,5]
+clr = ["r","b","c","m","g"]
+plt.pie(size,labels=activities,colors=clr,startangle=90,shadow=True)
+plt.title("Average Week")
+plt.show()

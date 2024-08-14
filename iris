@@ -1,0 +1,44 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+flower = pd.read_csv("iris.csv")
+print(flower.head())
+print(flower.shape)
+print(flower.describe())#describe gives numerical information
+print(flower.info()) # info gives information like data type
+print(flower.isnull().sum()) # shows the amount of null values in each column
+duplicate = flower.drop_duplicates(subset= "species") #removes all duplicates from data 
+print(duplicate)
+print(flower.value_counts("species")) #counts how many entries in data for each species
+
+#data visualisation
+fig, axes = plt.subplots(2,2,figsize=(10,10))
+axes[0,0].set_title("sepal length")
+axes[0,0].hist([flower[flower["species"]=="setosa"]["sepal_length"],# gives information for all sepal lengths that are setosa
+                flower[flower["species"]=="versicolor"]["sepal_length"],
+                flower[flower["species"]=="virginica"]["sepal_length"]],bins=20,label = ["setosa","versicolor","virginica"]
+                ,color= ["darkorange","royalblue","crimson"])
+axes[0,0].legend(title= "Species") 
+
+axes[0,1].set_title("sepal width")
+axes[0,1].hist([flower[flower["species"]=="setosa"]["sepal_width"],# gives information for all sepal widths that are setosa
+                flower[flower["species"]=="versicolor"]["sepal_width"],
+                flower[flower["species"]=="virginica"]["sepal_width"]],bins=20,label = ["setosa","versicolor","virginica"]
+                ,color= ["darkorange","royalblue","crimson"])
+axes[0,1].legend(title= "Species") 
+
+axes[1,0].set_title("petal length")
+axes[1,0].hist([flower[flower["species"]=="setosa"]["petal_length"],# gives information for all petal lengths that are setosa
+                flower[flower["species"]=="versicolor"]["petal_length"],
+                flower[flower["species"]=="virginica"]["petal_length"]],bins=20,label = ["setosa","versicolor","virginica"]
+                ,color= ["darkorange","royalblue","crimson"])
+axes[1,0].legend(title= "Species") 
+
+axes[1,1].set_title("petal width")
+axes[1,1].hist([flower[flower["species"]=="setosa"]["petal_width"],# gives information for all petal widths that are setosa
+                flower[flower["species"]=="versicolor"]["petal_width"],
+                flower[flower["species"]=="virginica"]["petal_width"]],bins=20,label = ["setosa","versicolor","virginica"]
+                ,color= ["darkorange","royalblue","crimson"])
+axes[1,1].legend(title= "Species") 
+
+plt.show()

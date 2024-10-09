@@ -1,0 +1,24 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import plotly
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
+covid = pd.read_csv("/content/covid_data.csv")
+covid = covid[["Province_State","Country_Region","Confirmed","Recovered","Deaths","Active"]] #selection of columns that we want
+covid.columns = ("State","Country","Confirmed","Recovered","Dead","Active Cases") 
+covid["State"].fillna(value="") 
+print(covid.head())
+
+#top ten most affected countries visualisation
+ten = pd.DataFrame(covid.groupby("Country")["Confirmed"].sum().nlargest(10))
+print(ten)
+plot1 = px.scatter(ten,x=ten.index,y="Confirmed",size="Confirmed",size_max = 120,color = ten.index, title = "Countries most affected by COVID")
+plot1.write_html("Plot_1.html",auto_open = True)
+
+#top tem most deaths countries
+dead_ten = pd.DataFrame(covid.groupby("Country")["Dead"].sum().nlargest(10))
+print(dead_ten)
+plot2 = px.scatter(dead_ten, x = dead_ten.index, y = "Dead", size = "Dead", size_max = 120, color = dead_ten.index, title = "Countries with most COVID deaths")
+plot2.write_html("Plot_2.html", auto_open = True)
